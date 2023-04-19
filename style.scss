@@ -1,0 +1,155 @@
+body {
+  background-color: #2d2d2d;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  // background-color: rgb(89, 166, 255);
+}
+
+.clock-face {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 2px solid #b4ffb0;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hand {
+  position: absolute;
+  background-color: black;
+  transform-origin: bottom center;
+}
+
+.hour-hand {
+  height: 50px;
+  width: 6px;
+  border-radius: 6px 6px 0 0;
+  transform: rotate(30deg);
+}
+
+.minute-hand {
+  height: 80px;
+  width: 4px;
+  border-radius: 4px 4px 0 0;
+  transform: rotate(45deg);
+}
+
+.number {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+  color: #c6e6c4;
+}
+
+.number1 {
+  top: 30px;
+  left: 140px;
+}
+
+.number2 {
+  top: 30px;
+  left: 135px;
+}
+
+.number3 {
+  top: 80px;
+  right: 10px;
+}
+
+.number4 {
+  top: 135px;
+  right: 30px;
+}
+
+.number5 {
+  bottom: 10px;
+  right: 80px;
+}
+
+.number6 {
+  bottom: 80px;
+  right: 10px;
+}
+
+.number7 {
+  bottom: 135px;
+  right: 30px;
+}
+
+.number8 {
+  bottom: 10px;
+  left: 80px;
+}
+
+.number9 {
+  bottom: 80px;
+  left: 10px;
+}
+
+.number10 {
+  bottom: 135px;
+  left: 30px;
+}
+
+.number11 {
+  top: 135px;
+  left: 30px;
+}
+
+.number12 {
+  top: 80px;
+  left: 10px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  // background-color: green;
+
+  .horas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .minutos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 5px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  background-color: #ccc;
+}
