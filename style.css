@@ -27,7 +27,19 @@ h1 {
 
 .digital {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+}
+
+.contador {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100px;
+  color: #b4ffb0;
 }
 
 .clock-container {
@@ -111,7 +123,7 @@ h1 {
 
 .number4 {
   top: 135px;
-  right: 30px;
+  right: 25px;
 }
 
 .number5 {

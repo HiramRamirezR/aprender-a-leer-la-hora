@@ -7,6 +7,9 @@ const minuteMinusBtn = document.querySelector('#minute-minus');
 const checkTimeBtn = document.querySelector('#check-time');
 const hour = document.querySelector('#hour');
 const minute = document.querySelector('#minute');
+const contadorDisplay = document.querySelector('#contador');
+
+let contador = 0;
 
 let currentHour = 0;
 let currentMinute = 0;
@@ -18,15 +21,20 @@ function digitalTime() {
   let randomHour = Math.floor(Math.random() * 12) + 1;
   let randomMinute = Math.floor(Math.random() * 60);
 
+  console.log(randomMinute.length);
+
   hour.textContent = randomHour;
   minute.textContent = randomMinute;
+
+  randomMinute === 0 ? minute.textContent = '00' : randomMinute.length < 2 ? minute.textContent = `0${randomMinute}` : minute.textContent = randomMinute;
+  randomMinute.toString().length < 2 ? minute.textContent = `0${randomMinute}` : minute.textContent = randomMinute
 }
 
 digitalTime();
 
 hourPlusBtn.addEventListener('click', () => {
   currentHour = (currentHour + 1) % 12;
-  console.log(currentHour);
+  // console.log(currentHour);
   if (currentHour === 0) currentHour = 12;
   hourInitial += 30;
   hourHand.style.transform = `rotate(${hourInitial}deg)`;
@@ -34,7 +42,7 @@ hourPlusBtn.addEventListener('click', () => {
 
 hourMinusBtn.addEventListener('click', () => {
   currentHour = (currentHour - 1 + 12) % 12;
-  console.log(currentHour);
+  // console.log(currentHour);
   if (currentHour === 0) currentHour = 12;
   hourInitial -= 30;
   hourHand.style.transform = `rotate(${hourInitial}deg)`;
@@ -42,14 +50,14 @@ hourMinusBtn.addEventListener('click', () => {
 
 minutePlusBtn.addEventListener('click', () => {
   currentMinute = (currentMinute + 1) % 60;
-  console.log(currentMinute);
+  // console.log(currentMinute);
   minuteInitial += 6;
   minuteHand.style.transform = `rotate(${minuteInitial}deg)`;
 });
 
 minuteMinusBtn.addEventListener('click', () => {
   currentMinute = (currentMinute - 1 + 60) % 60;
-  console.log(currentMinute);
+  // console.log(currentMinute);
   minuteInitial -= 6;
   minuteHand.style.transform = `rotate(${minuteInitial}deg)`;
 });
@@ -59,15 +67,15 @@ checkTimeBtn.addEventListener('click', () => {
   let hourAnswer = parseInt(hour.textContent);
   let minuteAnswer = parseInt(minute.textContent);
 
-  console.log(`hourAnswer: ${hourAnswer}`);
-  console.log(`minuteAnswer: ${minuteAnswer}`	);
-
-
   if (hourAnswer === currentHour && minuteAnswer === currentMinute) {
     console.log('¡Correcto!');
+    contador ++
+    contadorDisplay.innerHTML = contador;
   } else {
     console.log('Incorrecto. Por favor, intenta de nuevo.');
+    contador--
+    contador < 0 ? contador = 0 : contador
+    contadorDisplay.innerHTML = contador;
   }
-  console.log(`currentHour: ${currentHour}`);
-  console.log(`currentMinute: ${currentMinute}`);
+
 });
