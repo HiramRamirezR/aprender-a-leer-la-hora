@@ -5,50 +5,69 @@ const hourMinusBtn = document.querySelector('#hour-minus');
 const minutePlusBtn = document.querySelector('#minute-plus');
 const minuteMinusBtn = document.querySelector('#minute-minus');
 const checkTimeBtn = document.querySelector('#check-time');
+const hour = document.querySelector('#hour');
+const minute = document.querySelector('#minute');
 
-function setClock() {
-  const secondsDegrees = (seconds / 60) * 360 + 90;
-  const minutesDegrees = (minutes / 60) * 360 + 90;
-  const hoursDegrees = (hours / 12) * 360 + 90;
+let currentHour = 0;
+let currentMinute = 0;
 
-  secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-  minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
-  hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+let hourInitial = 0;
+let minuteInitial = 0;
+
+function digitalTime() {
+  let randomHour = Math.floor(Math.random() * 12) + 1;
+  let randomMinute = Math.floor(Math.random() * 60);
+
+  hour.textContent = randomHour;
+  minute.textContent = randomMinute;
 }
 
-let currentHour = 12;
-let currentMinute = 0;
+digitalTime();
 
 hourPlusBtn.addEventListener('click', () => {
   currentHour = (currentHour + 1) % 12;
+  console.log(currentHour);
   if (currentHour === 0) currentHour = 12;
-  hourHand.style.transform = `rotate(${(currentHour / 12) * 360 + 90}deg)`;
+  hourInitial += 30;
+  hourHand.style.transform = `rotate(${hourInitial}deg)`;
 });
 
 hourMinusBtn.addEventListener('click', () => {
   currentHour = (currentHour - 1 + 12) % 12;
+  console.log(currentHour);
   if (currentHour === 0) currentHour = 12;
-  hourHand.style.transform = `rotate(${(currentHour / 12) * 360 + 90}deg)`;
+  hourInitial -= 30;
+  hourHand.style.transform = `rotate(${hourInitial}deg)`;
 });
 
 minutePlusBtn.addEventListener('click', () => {
   currentMinute = (currentMinute + 1) % 60;
-  minuteHand.style.transform = `rotate(${(currentMinute / 60) * 360 + 90}deg)`;
+  console.log(currentMinute);
+  minuteInitial += 6;
+  minuteHand.style.transform = `rotate(${minuteInitial}deg)`;
 });
 
 minuteMinusBtn.addEventListener('click', () => {
   currentMinute = (currentMinute - 1 + 60) % 60;
-  minuteHand.style.transform = `rotate(${(currentMinute / 60) * 360 + 90}deg)`;
+  console.log(currentMinute);
+  minuteInitial -= 6;
+  minuteHand.style.transform = `rotate(${minuteInitial}deg)`;
 });
 
 checkTimeBtn.addEventListener('click', () => {
-  const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
 
-  if (hours === currentHour && minutes === currentMinute) {
-    alert('¡Correcto!');
+  let hourAnswer = parseInt(hour.textContent);
+  let minuteAnswer = parseInt(minute.textContent);
+
+  console.log(`hourAnswer: ${hourAnswer}`);
+  console.log(`minuteAnswer: ${minuteAnswer}`	);
+
+
+  if (hourAnswer === currentHour && minuteAnswer === currentMinute) {
+    console.log('¡Correcto!');
   } else {
-    alert('Incorrecto. Por favor, intenta de nuevo.');
+    console.log('Incorrecto. Por favor, intenta de nuevo.');
   }
+  console.log(`currentHour: ${currentHour}`);
+  console.log(`currentMinute: ${currentMinute}`);
 });
