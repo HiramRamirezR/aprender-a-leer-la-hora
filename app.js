@@ -78,4 +78,5 @@ checkTimeBtn.addEventListener('click', () => {
     contadorDisplay.innerHTML = contador;
   }
 
+  digitalTime();
 });
