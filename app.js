@@ -13,6 +13,7 @@ const h1 = document.querySelector('h1');
 const clockFace = document.querySelector('.clock-face');
 const numbers = document.querySelectorAll('.number');
 const digital = document.querySelector('.digital');
+const circle = document.querySelector('.circle');
 
 const colores = ['#b4ffb0', '#f3ffb0', '#b0fbff', '#b0b7ff', '#f2b0ff', '#ffb0b0']
 
@@ -92,6 +93,7 @@ checkTimeBtn.addEventListener('click', () => {
   contadorDisplay.style.color = colores[randomColor];
   contadorTexto.style.color = colores[randomColor];
   digital.style.border = `1px solid ${colores[randomColor]}`;
+  circle.style.backgroundColor = colores[randomColor];
 
   digitalTime();
 });
