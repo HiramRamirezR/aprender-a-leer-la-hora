@@ -8,6 +8,13 @@ const checkTimeBtn = document.querySelector('#check-time');
 const hour = document.querySelector('#hour');
 const minute = document.querySelector('#minute');
 const contadorDisplay = document.querySelector('#contador');
+const contadorTexto = document.querySelector('.contador-texto');
+const h1 = document.querySelector('h1');
+const clockFace = document.querySelector('.clock-face');
+const numbers = document.querySelectorAll('.number');
+const digital = document.querySelector('.digital');
+
+const colores = ['#b4ffb0', '#f3ffb0', '#b0fbff', '#b0b7ff', '#f2b0ff', '#ffb0b0']
 
 let contador = 0;
 
@@ -77,6 +84,14 @@ checkTimeBtn.addEventListener('click', () => {
     contador < 0 ? contador = 0 : contador
     contadorDisplay.innerHTML = contador;
   }
+
+  let randomColor = Math.floor(Math.random() * colores.length);
+  h1.style.color = colores[randomColor];
+  clockFace.style.border = `1px solid ${colores[randomColor]}`;
+  numbers.forEach(number => number.style.color = colores[randomColor]);
+  contadorDisplay.style.color = colores[randomColor];
+  contadorTexto.style.color = colores[randomColor];
+  digital.style.border = `1px solid ${colores[randomColor]}`;
 
   digitalTime();
 });
